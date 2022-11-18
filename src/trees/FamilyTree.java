@@ -41,7 +41,7 @@ public class FamilyTree
         TreeNode getNodeWithName(String targetName)
         {
             // Does this node have the target name?
-            if (?????)
+            if (getName().equals(targetName))
                 return this;
                     
             // No, recurse. Check all children of this node.
