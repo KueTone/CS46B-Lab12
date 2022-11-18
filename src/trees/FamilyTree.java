@@ -34,8 +34,8 @@ public class FamilyTree
             // Add childNode to this node's children list. Also
             // set childNode's parent to this node.
         	
-        	childNode.parent = parent;
-        	children.add(childNode); // addes childNode to arraylist
+        	children.add(childNode); 	// addes childNode to arraylist
+        	childNode.parent = this; 	// binds parent to this node
         }
         
         
@@ -52,6 +52,11 @@ public class FamilyTree
             {
                 // If child.getNodeWithName(targetName) returns a non-null node,
                 // then that's the node we're looking for. Return it.
+            	TreeNode result = child.getNodeWithName(targetName); 	// put result of getNode... into tree node var
+            	if (result != null) 									// checks if there is a result from child
+            	{
+            		return result;										// returns result Node
+            	}
             }
             
             // Not found anywhere.
@@ -69,7 +74,13 @@ public class FamilyTree
             // the nodes of a tree is like traversing a linked list. If that isn’t clear,
             // draw a tree, mark any leaf node, and then mark its ancestors in order from
             // recent to ancient. Expect a question about this on the final exam.
-
+            TreeNode current = parent;
+            while (current != null)
+            {
+            	ancestors.add(current); 	// adds parent to arraylist ancestor
+            	current = current.parent; 	// traverse tree from child to parent
+            }
+            
             return ancestors;
         }
         
